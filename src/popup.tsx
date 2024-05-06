@@ -8,9 +8,9 @@ function IndexPopup() {
   )
 
   return (
-    <div className="bg-slate-400 text-slate-950 p-8">
-      <h3 className="font-semibold">Overtime</h3>
-      <div>{ Math.floor(overtime / 60) }h{ overtime % 60 }m</div>
+    <div className="bg-slate-400 text-slate-950 px-8 py-4 text-center">
+      <h1 className="font-semibold text-lg">overtime</h1>
+      <p className="text-4xl">{ Math.floor(overtime / 60) }h{ overtime % 60 }m</p>
     </div>
   )
 }

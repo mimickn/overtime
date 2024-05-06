@@ -41,22 +41,13 @@ const getOvertime = (month: number): number => {
   for (const [index, timeStamp] of Object.entries(timeStampTable)) {
     const workingHourString = (timeStamp.children[WORKING_TIME_ROW_INDEX].textContent as string).replace('h', '').replace('\n', '').trim()
     const overtimeByDay = convertHhmmToMinutes(workingHourString) === 0 ? convertHhmmToMinutes(workingHourString) : convertHhmmToMinutes(workingHourString) - (7.5 * 60)
-    console.log('day:', parseInt(index) + 1);
-    console.log('overtimeByDay:', overtimeByDay);
     totalOvertime += overtimeByDay
   }
-
-  console.log('month:', month);
-  console.log('totalOvertime:', totalOvertime);
 
   return totalOvertime
 }
 
-type ReturnType = {
-  overtime: number
-}
-
-export const MfAttendance = async (): Promise<ReturnType> => {
+export const MfAttendance = async (): Promise<void> => {
   if (!isMfAttendancePage()) return
 
   const storage = new Storage()
