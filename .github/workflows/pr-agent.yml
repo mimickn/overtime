@@ -25,6 +25,8 @@ jobs:
           OPENAI.API_VERSION: ${{ vars.OPENAI_API_VERSION }}
           OPENAI.API_BASE: ${{ vars.OPENAI_API_BASE }}
           CONFIG.MODEL: ${{ vars.CONFIG_MODEL }}
+          CONFIG.MODEL_TURBO: ${{ vars.MODEL_TURBO }}
+          CONFIG.FALLBACK_MODELS: ${{ vars.FALLBACK_MODELS }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTION_CONFIG.AUTO_DESCRIBE: true
           GITHUB_ACTION_CONFIG.AUTO_REVIEW: true
