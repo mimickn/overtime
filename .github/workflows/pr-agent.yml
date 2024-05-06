@@ -21,9 +21,8 @@ jobs:
       - id: pragent
         uses: Codium-ai/pr-agent@v0.21
         env:
-          OPENAI.KEY: ${{ secrets.OPENAI_KEY }}
-          OPENAI.API_VERSION: ${{ vars.OPENAI_API_VERSION }}
-          OPENAI.API_BASE: ${{ vars.OPENAI_API_BASE }}
+          VERTEXAI.VERTEX_PROJECT: ${{ secrets.VERTEX_PROJECT }}
+          VERTEXAI.VERTEX_LOCATION: ${{ secrets.VERTEX_LOCATION }}
           CONFIG.MODEL: ${{ vars.CONFIG_MODEL }}
           CONFIG.MODEL_TURBO: ${{ vars.MODEL_TURBO }}
           CONFIG.FALLBACK_MODELS: ${{ vars.FALLBACK_MODELS }}
