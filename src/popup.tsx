@@ -8,9 +8,9 @@ function IndexPopup() {
   )
 
   return (
-    <div className="plasmo-flex plasmo-items-center plasmo-justify-center plasmo-h-16 plasmo-w-40">
-      Overtime
-      { overtime }
+    <div className="bg-slate-400 text-slate-950 p-8">
+      <h3 className="font-semibold">Overtime</h3>
+      <div>{ Math.floor(overtime / 60) }h{ overtime % 60 }m</div>
     </div>
   )
 }
