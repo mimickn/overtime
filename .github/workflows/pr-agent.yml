@@ -1,0 +1,34 @@
+name: pr-agent
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+  issue_comment:
+    types: [created, edited]
+  pull_request_review_comment:
+    types: [created, edited]
+
+jobs:
+  pr_agent_job:
+    if: ${{ github.event.sender.type != 'Bot' }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: write
+    name: Run pr agent on every pull request, respond to user comments
+    steps:
+      - id: pragent
+        uses: Codium-ai/pr-agent@v0.21
+        env:
+          OPENAI.KEY: ${{ secrets.OPENAI_KEY }}
+          OPENAI.API_VERSION: ${{ vars.OPENAI_API_VERSION }}
+          OPENAI.API_BASE: ${{ vars.OPENAI_API_BASE }}
+          CONFIG.MODEL: ${{ vars.CONFIG_MODEL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTION_CONFIG.AUTO_DESCRIBE: true
+          GITHUB_ACTION_CONFIG.AUTO_REVIEW: true
+          GITHUB_ACTION_CONFIG.AUTO_IMPROVE: true
+          PR_DESCRIPTION.EXTRA_INSTRUCTIONS: 'Please use Japanese.'
+          PR_REVIEWER.EXTRA_INSTRUCTIONS: 'Please use Japanese.'
+          PR_CODE_SUGGESTIONS.EXTRA_INSTRUCTIONS: 'Please use Japanese.'
